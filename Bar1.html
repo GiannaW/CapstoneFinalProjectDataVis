@@ -8,6 +8,7 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
 </head>
 <body>
+    <h1> New York Barchart of Police Budget</h1>
    
     <script type="text/javascript"> 
 
@@ -37,6 +38,11 @@
                             .attr("height", function(d){
                                 return d.Amount / 11050000000  * h;
                             })
+
+                            .attr("y", function(d){
+                                return h - +d.Amount / 11050000000 * h;   
+                            })
+
            
                 //     var yScale = d3.scaleLog()
                 //         .range([h - cellpadding, cellpadding])
