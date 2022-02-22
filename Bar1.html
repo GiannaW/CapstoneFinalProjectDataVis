@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New York Barchart</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+   
+    <script type="text/javascript"> 
+
+ 
+        var w = 500;
+        var h = 100;
+        // var margin={top:50,bottom:50,left:50,right:50}
+        var cellpadding = 5;
+       
+        var svg = d3.select("body").append("svg")
+            .attr("width", w)
+        //  console.log(w)
+            .attr("height", h);
+
+        d3.csv('Capstone Police Budget Data - NewYorkBudget.csv')
+            .then(function(data){
+                console.log(data)
+                 svg.selectAll("rect")
+                    .data(data)
+                    .enter()
+                    .append("rect")
+                        .attr('width',w/data.length-cellpadding)
+                        .attr('height',h)
+                         .attr("x", function(d, i){
+                             return w / data.length * i;
+                         })
+                            .attr("height", function(d){
+                                return d.Amount / 11050000000  * h;
+                            })
+           
+                //     var yScale = d3.scaleLog()
+                //         .range([h - cellpadding, cellpadding])
+                //         .domain([d3.min(data), d3.max(data)]);
+                //         .attr("width",w/data.length-cellpadding)
+                //         .attr("height",h)
+                //             .attr("x",function(d,i){
+                //                 return w/data.length *i;
+                //             })
+                //             .attr("height", function(d){
+                //                 return d.Amount / 160 * h;
+                //             })
+           
+                //                  .attr("width",w/data.length-cellpadding)
+                //         .attr("height",h)
+                //             .attr("x", function(d, i){
+                //                 // console.log(w / data.length * i);
+                //                 return w / data.length * i;
+                                
+                //             } )
+                //             .attr("height", function(d){
+                //                 // console.log(d.Amount)
+                //                  return d.Amount;
+                             })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // const x = d3.scaleBand()
+        //     .domain(d3.range(data.length))
+        //     .range([margin.left,width-margin.right])
+        //     .padding (.1);
+
+        // const y = d3.scaleLinear()
+        //     .domain([0,12000000000])
+        //     .range([height-margin.bottom,margin.top]);
+        // // console.log(data[0]['Amount'])
+        // // console.log(data.length)
+       
+        // for (let i = 0; i< data.length; i++) {
+        //     console.log(data[i]['Amount'])
+        //     svg     
+                
+
+
+        //         .append('g')
+        //         .attr("fill",'royalblue')
+        //         .selectAll('rect')  
+        //         .data(data[i]['Amount'])
+        //         .join('rect')
+        //             .attr('x',(d,i)=>x(i))
+        //             .attr('y', d => (data[i]['Amount']))
+        //             //.attr('height',d => y(0) - y(data[i]['Amount']))
+        //             .attr('width',x.bandwidth())
+        // }
+        // svg.node();
+
+
+
+            
+
+           
+            
+            // .join('rect')
+            //     .attr('x',(d,i)=>x(i))
+            //     .attr('y',(d)=> y(d.Amount))
+                
+            //     .attr('height', d =>y(0)-y(d.Amount))
+            //             .attr('width',x.bandwidth())
+            // svg.node();  
+                    
+        //         console.log(data);
+        
+
+               
+           
+           
+
+                
+        //  } )
+
+    
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </script>
+    
+</body>
+</html>
