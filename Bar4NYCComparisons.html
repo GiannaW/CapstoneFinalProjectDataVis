@@ -8,7 +8,7 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
 </head>
 <body>
-    <h1> Philadelphia Barchart of Police Budget</h1>
+    <h1> NYC Comparison</h1>
     
    
     <script type="text/javascript"> 
@@ -18,17 +18,18 @@
         var h = 500;
         // var margin={top:50,bottom:50,left:50,right:50}
         var cellpadding = 5;
-       
+        
         var svg = d3.select("body").append("svg")
             .attr("width", w)
         //  console.log(w)
             .attr("height", h);
 
-        d3.csv('Capstone Police Budget Data - PhillyBudget.csv')
+        d3.csv('Combine Police Comparison  - New York.csv')
         .then(function(data){
-                console.log(data)
+                
                 var yScale = d3.scaleLinear()
                 .domain([0, d3.max(data, function(d){
+                    
                     return +d.Amount;
                 })])
                 .range([0, h/2]);
@@ -39,6 +40,7 @@
                 .range([255, 0]);
 
                  svg.selectAll("rect")
+                    
                     .data(data)
                     .enter()
                     .append("rect")
@@ -51,14 +53,14 @@
                                 return yScale(d.Amount);
                             })
 
-                            .attr("y",function(d){
+                            .attr("y", function(d){
                                 return h/2-yScale(d.Amount);   
                             })
 
                             .attr("fill", function(d){
+                            
                                 var f = colorScale(d.Amount);
-                                if (d.Amount != 956632151)
-                                    
+                                if (f > d3.max(d.Amount))
                                     return "rgb(" + 203 + ",195,227)";
                                 else
                                     return "rgb(" + 138 + ",43,226)";
@@ -82,7 +84,6 @@
 
                             var scale = d3.scaleLinear()
                                 .domain([0, d3.max(data, function(d){
-                                    
                                     return d.Amount; 
                                 })])
                                 .range([h/2, 0])
